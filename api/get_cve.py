@@ -36,7 +36,7 @@ def get_all_cve():
             response = response[:40]
         return response
     except Exception as e:
-        print(f"Error in get_nist_key: {e}")
+        return {"Error in get_all_cve:": {e}}
 
 @router.get("/get")
 def get_cve_by_key(query: str):
@@ -49,7 +49,7 @@ def get_cve_by_key(query: str):
                     break
         return response
     except Exception as e:
-        print(f"Error in get_nist_key: {e}")
+        return {"Error in get_cve_by_key:": {e}}
 
 @router.get("/get/new")
 def get_new_cve():
@@ -61,7 +61,7 @@ def get_new_cve():
         )
         return sorted_by_date[:10]
     except Exception as e:
-        print(f"Error in get_nist_key: {e}")
+        return {"Error in get_new_cve:": {e}}
 
 @router.get("/get/known")
 def get_known():
@@ -72,4 +72,4 @@ def get_known():
                 response.append(cve)
         return response[:10]
     except Exception as e:
-        print(f"Error in get_nist_key: {e}")
+        return {"Error in get_known:": {e}}
